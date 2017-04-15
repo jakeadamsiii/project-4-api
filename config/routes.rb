@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  get 'authentications/register'
-
-  get 'authentications/login'
 
   scope :api do
     resources :donations
     resources :projects
     resources :categories
-    resources :users
+    resources :users, except: [:create]
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
+    post 'oauth/github', to: 'oauth#github'
   end
 end

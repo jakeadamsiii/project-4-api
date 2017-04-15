@@ -1,23 +1,23 @@
 class OauthController < ApplicationController
-  # skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def github
-    token = HTTParty.post('https://github.com/login/oauth/access_token', {
+    token =HTTParty.post('https://github.com/login/oauth/access_token', {
       query: {
-        client_id: ENV["GITHUB_CLIENT_ID"],
-        client_secret: ENV["GITHUB_CLIENT_SECRET"],
+        client_id: ENV["FUNDRAISER_GITHUB_CLIENT_ID"],
+        client_secret: ENV["FUNDRAISER_GITHUB_CLIENT_SECRET"],
         code: params[:code]
       },
-      headers: { 'Accept' => 'application/json'}
-    }).parsed_response
+      headers: {"Accept" => 'application/json'}
+      }).parsed_response
 
-    profile = HTTParty.get('https://api.github.com/user', {
-      query: token,
-      headers: { 'User-Agent' => 'HTTParty', 'Accept' => 'application/json' }
-    }).parsed_response
+      profile = HTTParty.get('https://api.github.com/user', {
+        query: token,
+        headers: { 'User-Agent' => 'HTTParty', 'Accept' => 'application/json' }
+        }).parsed_response
 
     user = User.where("email = :email OR github_id = :github_id", email: profile["email"], github_id: profile["id"]).first
-    user = User.new username: profile["login"], email: profile["email"] unless user
+    user = User.new name: profile["login"], email: profile["email"] unless user
 
     user[:github_id] = profile["id"]
 
@@ -28,4 +28,5 @@ class OauthController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
 end

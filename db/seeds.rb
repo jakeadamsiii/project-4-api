@@ -1,3 +1,5 @@
+require 'Date'
+
 u1 = User.create!(name: "alex chin", email: "jake@jake", password: "password", password_confirmation: "password", image: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/097/21e/11d164d.jpg")
 u2 = User.create!(name: "Phillip", email: "kake@kake", password: "password", password_confirmation: "password", image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQCBuBIQlAaXs_7dgvbqzZ75pWTQ3J2N6E_3yVgF7TKEemItG_W")
 
