@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!
 
   # GET /projects
   def index
@@ -16,6 +17,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
 
     if @project.save
       render json: @project, status: :created, location: @project
@@ -26,6 +28,7 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   def update
+    return render json: { errors: ["Unauthorized"] } if @project.user != current_user
     if @project.update(project_params)
       render json: @project
     else
@@ -35,6 +38,7 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
+    return render json: { errors: ["Unauthorized"] } if @project.user != current_user
     @project.destroy
   end
 
