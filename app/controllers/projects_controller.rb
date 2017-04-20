@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(Uploader.upload(project_params))
     @project.user = current_user
 
     if @project.save
@@ -50,6 +50,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:title, :category_id, :end_date, :brief, :video, :image, :target_amount, :user_id)
+      params.require(:project).permit(:title, :category_id, :end_date, :brief, :video, :target_amount, :user_id, :base64)
     end
 end

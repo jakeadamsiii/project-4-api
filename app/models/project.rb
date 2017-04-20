@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  mount_uploader :image, ImageUploader
   has_one :category
   belongs_to :user
 
