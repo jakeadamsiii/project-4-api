@@ -18,6 +18,9 @@ class DonationsController < ApplicationController
   def create
     @donation = Donation.new(donation_params)
 
+    require "stripe"
+    Stripe.api_key = 'sk_test_RbXPNxb0rbgsI2mRZW113s7D'
+
     if @donation.save
       render json: @donation, status: :created, location: @donation
     else
