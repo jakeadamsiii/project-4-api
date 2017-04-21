@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'oauth/facebook'
+
   scope :api do
     resources :charges
     resources :donations
@@ -9,5 +11,6 @@ Rails.application.routes.draw do
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
     post 'oauth/github', to: 'oauth#github'
+    post 'oauth/facebook', to: 'oauth#facebook'
   end
 end

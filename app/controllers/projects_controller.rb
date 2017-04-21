@@ -19,6 +19,15 @@ class ProjectsController < ApplicationController
     @project = Project.new(Uploader.upload(project_params))
     @project.user = current_user
 
+    project_video_data = project_params
+
+    if project_video_data[:embed_code]
+      project_video_data[:embed_code].match(%r{\?v=(.*)})
+      project_video_data[:youtube_id] = $1
+      project_video_data.delete(:embed_code)
+    end
+
+    p "*** here is the project *** #{@project.image}"
     if @project.save
       render json: @project, status: :created, location: @project
     else

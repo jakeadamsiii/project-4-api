@@ -9,7 +9,6 @@ class Uploader
   end
 
   def self.upload(params)
-
      image_data = split_base64(params[:base64])
 
      if image_data

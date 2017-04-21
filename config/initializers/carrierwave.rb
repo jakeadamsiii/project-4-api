@@ -9,6 +9,7 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV["AWS_SECRET_KEY"]
   }
 
+# config.omniauth :facebook, "APP_ID", "APP_SECRET"
 
   if Rails.env.production?
     config.root = Rails.root.join("tmp")

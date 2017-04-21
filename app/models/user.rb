@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true, unless: :oauth_login?, on: :create
 
   def oauth_login?
-    github_id.present? #or facebook_id.present?
+    github_id.present? || facebook_id.present?
   end
 end
