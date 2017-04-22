@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'oauth/facebook'
-
   scope :api do
     resources :charges
     resources :donations

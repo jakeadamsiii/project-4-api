@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     return render json: { errors: ["Unauthorized"] } if @project.user != current_user
-    if @project.update(project_params)
+    if @project.update(Uploader.upload(project_params))
       render json: @project
     else
       render json: @project.errors, status: :unprocessable_entity

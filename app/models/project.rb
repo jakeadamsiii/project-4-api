@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
   mount_uploader :image, ImageUploader
-  has_one :category
+  belongs_to :category
   belongs_to :user
-  has_many :donations
+  has_many :donations, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
   validates :brief, presence: true

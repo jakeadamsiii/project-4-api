@@ -1,7 +1,7 @@
 class ProjectSerializer < ActiveModel::Serializer
   attributes :id, :title, :end_date, :brief, :video, :target_amount, :image_src, :current_amount, :amount_remaining, :percent
-  has_one :category
-  has_one :user
+  belongs_to :category
+  belongs_to :user
   has_many :donations
 
   def image_src

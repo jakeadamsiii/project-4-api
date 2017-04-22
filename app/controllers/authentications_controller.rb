@@ -3,7 +3,6 @@ class AuthenticationsController < ApplicationController
 
   def register
     user = User.new(Uploader.upload(user_params))
-    p "*** here is the project *** #{user.image}"
     if user.save
       render json: user, status: :ok
     else
