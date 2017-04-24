@@ -17,7 +17,7 @@ class ProjectSerializer < ActiveModel::Serializer
   end
 
   def percent
-    current_amount.to_f / object.target_amount.to_f * 100
+    (current_amount.to_f / object.target_amount.to_f * 100).ceil
   end
 
 end
