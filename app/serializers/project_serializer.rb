@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :end_date, :brief, :video, :target_amount, :image_src, :current_amount, :amount_remaining, :percent
+  attributes :id, :title, :end_date, :brief, :video, :target_amount, :image_src, :current_amount, :amount_remaining, :percent, :days_to
   belongs_to :category
   belongs_to :user
   has_many :donations
@@ -18,6 +18,11 @@ class ProjectSerializer < ActiveModel::Serializer
 
   def percent
     (current_amount.to_f / object.target_amount.to_f * 100).ceil
+  end
+
+  def days_to
+    require 'date'
+    (Date.parse(object.end_date.to_s) - Date.today).abs.to_i
   end
 
 end
