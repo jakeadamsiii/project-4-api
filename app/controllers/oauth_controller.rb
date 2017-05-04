@@ -4,9 +4,9 @@ class OauthController < ApplicationController
   def facebook
     token =HTTParty.post('https://graph.facebook.com/v2.8/oauth/access_token', {
       query: {
-        client_id: ENV["FUNDR_FB_APP_ID"],
-        redirect_uri: 'http://localhost:7000/',
-        client_secret: ENV["FUNDR_FB_APP_SECRET"],
+        client_id: ENV["FB_API_KEY"],
+        redirect_uri: 'http://intense-plateau-10152.herokuapp.com',
+        client_secret: ENV["FB_CLIENT_SECRET"],
         code: params[:code]
       },
       headers: {"Accept" => 'application/json'}
@@ -60,8 +60,5 @@ class OauthController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
-
-
 
 end
