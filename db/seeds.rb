@@ -1,5 +1,9 @@
 require 'date'
-#
+
+[User,Category,Project,Donation].each do |model|
+  ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{model.table_name} RESTART IDENTITY CASCADE")
+end
+
 u1 = User.create!(name: "who", email: "kill@me", password: "password", password_confirmation: "password", image: File.open(File.join(Rails.root, "db/images/alexchin.jpg")))
 u2 = User.create!(name: "Dude", email: "fuck@this", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/alexchin2.jpg")))
 u3 = User.create!(name: "Dev", email: "dev@patel", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/devpatel.jpg")))
@@ -28,7 +32,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in urna augue. In
 p7 = Project.create!(title: "Teaching Guatemalans about the plight of the native sloths", user_id: 1, category_id: 7, end_date: Date.new(2017, 4, 28), brief: "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in urna augue. Integer eleifend consectetur sem. Fusce sit amet mauris vitae metus malesuada sollicitudin. Nunc fringilla, purus ac eleifend laoreet, magna ante finibus urna, ut fringilla urna dui vel metus. Curabitur in lectus sit amet urna interdum venenatis et eget quam. Nulla sodales metus rhoncus, tincidunt dui at, egestas quam. Ut in porta felis. In eget quam consectetur, pharetra enim eget, viverra lacus. Nam quis elit mollis, imperdiet ex et, auctor ante. Quisque imperdiet dignissim dolor et molestie. Vestibulum dapibus turpis sem, at imperdiet urna maximus ac. Vivamus et mi sit amet nunc iaculis dictum.", image: File.open(File.join(Rails.root, "db/images/sloth.jpg")), video: "https://www.youtube.com/embed/jbzV2Y06G-E", target_amount: 500 )
 p8 = Project.create!(title: "Habitat restoration", user_id: 3, category_id: 1, end_date: Date.new(2017, 7, 28), brief: "
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in urna augue. Integer eleifend consectetur sem. Fusce sit amet mauris vitae metus malesuada sollicitudin. Nunc fringilla, purus ac eleifend laoreet, magna ante finibus urna, ut fringilla urna dui vel metus. Curabitur in lectus sit amet urna interdum venenatis et eget quam. Nulla sodales metus rhoncus, tincidunt dui at, egestas quam. Ut in porta felis. In eget quam consectetur, pharetra enim eget, viverra lacus. Nam quis elit mollis, imperdiet ex et, auctor ante. Quisque imperdiet dignissim dolor et molestie. Vestibulum dapibus turpis sem, at imperdiet urna maximus ac. Vivamus et mi sit amet nunc iaculis dictum.", image: File.open(File.join(Rails.root, "db/images/habitat.jpg")), video: "https://www.youtube.com/embed/jbzV2Y06G-E", target_amount: 4050 )
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in urna augue. Integer eleifend consectetur sem. Fusce sit amet mauris vitae metus malesuada sollicitudin. Nunc fringilla, purus ac eleifend laoreet, magna ante finibus urna, ut fringilla urna dui vel metus. Curabitur in lectus sit amet urna interdum venenatis et eget quam. Nulla sodales metus rhoncus, tincidunt dui at, egestas quam. Ut in porta felis. In eget quam consectetur, pharetra enim eget, viverra lacus. Nam quis elit mollis, imperdiet ex et, auctor ante. Quisque imperdiet dignissim dolor et molestie. Vestibulum dapibus turpis sem, at imperdiet urna maximus ac. Vivamus et mi sit amet nunc iaculis dictum.", image: File.open(File.join(Rails.root, "db/images/habitat.jpeg")), video: "https://www.youtube.com/embed/jbzV2Y06G-E", target_amount: 4050 )
 
 
 d1 = Donation.create!(user_id: 2, project_id: 1, amount: 25)
