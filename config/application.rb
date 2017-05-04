@@ -29,12 +29,6 @@ module Fundraiser
 
     config.api_only = true
     config.eager_load_paths << Rails.root.join('lib')
-    config.middleware.insert_before 0, Rack::Cors do
-       allow do
-         origins ['localhost:7000', 'https://intense-plateau-10152.herokuapp.com']
-         resource '*', :headers => :any, :methods => :any
-       end
-     end
 
   end
 end
