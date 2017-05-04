@@ -5,7 +5,7 @@ class OauthController < ApplicationController
     token =HTTParty.post('https://graph.facebook.com/v2.8/oauth/access_token', {
       query: {
         client_id: ENV["FB_API_KEY"],
-        redirect_uri: 'http://intense-plateau-10152.herokuapp.com',
+        redirect_uri: 'https://intense-plateau-10152.herokuapp.com',
         client_secret: ENV["FB_CLIENT_SECRET"],
         code: params[:code]
       },
