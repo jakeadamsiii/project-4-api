@@ -3,7 +3,7 @@ require 'date'
 u1 = User.create!(name: "who", email: "kill@me", password: "password", password_confirmation: "password", image: File.open(File.join(Rails.root, "db/images/alexchin.jpg")))
 u2 = User.create!(name: "Dude", email: "fuck@this", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/alexchin2.jpg")))
 u3 = User.create!(name: "Dev", email: "dev@patel", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/devpatel.jpg")))
-u4 = User.create!(name: "Jake", email: "jake@jake", password: "password", password_confirmation: "password", image: File.open(File.join(Rails.root, "db/images/cooldog.jpg")))
+u4 = User.create!(name: "Jake", email: "jake@jake", password: "password", password_confirmation: "password", image: File.open(File.join(Rails.root, "db/images/cooldog.JPG")))
 u5 = User.create!(name: "CoolDog", email: "cool@dog", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/coolerdog.jpg")))
 u6 = User.create!(name: "Drildo", email: "drill@do", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/coolestdog.jpg")))
 
