@@ -1,4 +1,4 @@
-require 'Date'
+require 'date'
 #
 u1 = User.create!(name: "who", email: "kill@me", password: "password", password_confirmation: "password", image: File.open(File.join(Rails.root, "db/images/alexchin.jpg")))
 u2 = User.create!(name: "Dude", email: "fuck@this", password: "password", password_confirmation: "password",image: File.open(File.join(Rails.root, "db/images/alexchin2.jpg")))
