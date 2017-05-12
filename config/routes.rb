@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#ensures we go to /api when making requests
   scope :api do
     resources :charges
     resources :donations

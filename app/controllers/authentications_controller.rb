@@ -20,8 +20,9 @@ class AuthenticationsController < ApplicationController
     end
   end
 
+#whitelisted user params 
   private
-  def user_params
-    params.permit(:name, :email, :password, :password_confirmation, :base64)
-  end
+    def user_params
+      params.permit(:name, :email, :password, :password_confirmation, :base64)
+    end
 end

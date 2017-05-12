@@ -1,6 +1,7 @@
 class OauthController < ApplicationController
   skip_before_action :authenticate_user!
 
+#FB login generate token 
   def facebook
     token =HTTParty.post('https://graph.facebook.com/v2.8/oauth/access_token', {
       query: {

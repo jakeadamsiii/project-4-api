@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   def create
-  # Amount in cents
+  # Amount for skiddle api
     @amount = params[:amount]
 
     customer = Stripe::Customer.create(

@@ -1,5 +1,6 @@
 require 'jwt'
-
+#token expores after 30 days
+#token hashed here
 class Auth
 
   ALGORITHM = 'HS256'
